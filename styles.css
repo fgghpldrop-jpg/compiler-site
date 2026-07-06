@@ -860,7 +860,8 @@ html, body {
   background: linear-gradient(180deg, #1a2a1f 0%, #151f18 100%);
   border-top: 1px solid #2d5a3d;
   flex-shrink: 0;
-  max-height: 220px;
+  height: 160px;
+  min-height: 72px;
   overflow-y: auto;
 }
 
@@ -921,7 +922,7 @@ html, body {
 
 .output-vars {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 8px;
   padding: 10px 12px;
 }
@@ -968,7 +969,8 @@ html, body {
 }
 
 /* Panel Resizer */
-.panel-resizer {
+.panel-resizer,
+.output-resizer {
   height: 4px;
   cursor: ns-resize;
   background: transparent;
@@ -978,7 +980,8 @@ html, body {
   touch-action: none;
 }
 
-.panel-resizer::after {
+.panel-resizer::after,
+.output-resizer::after {
   content: '';
   position: absolute;
   left: 0;
@@ -992,7 +995,13 @@ body.resizing-panel .panel-resizer {
   background: #007acc;
 }
 
-.panel-resizer.hidden {
+.output-resizer:hover,
+body.resizing-output .output-resizer {
+  background: #3d8f5a;
+}
+
+.panel-resizer.hidden,
+.output-resizer.hidden {
   display: none;
 }
 
@@ -1001,7 +1010,13 @@ body.resizing-panel {
   user-select: none;
 }
 
-body.resizing-panel * {
+body.resizing-output {
+  cursor: ns-resize !important;
+  user-select: none;
+}
+
+body.resizing-panel *,
+body.resizing-output * {
   cursor: ns-resize !important;
 }
 

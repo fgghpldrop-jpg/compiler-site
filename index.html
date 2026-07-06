@@ -22,6 +22,8 @@
       </div>
       <span class="titlebar-title" id="titlebar-title">Compiler</span>
       <div class="titlebar-actions">
+        <button class="btn-run" id="btn-docs" title="Билеты (F1)">Docs</button>
+        <button class="btn-run" id="btn-solutions" title="Задания (F2)">Tasks</button>
         <button class="btn-run" id="btn-save" title="Сохранить (Ctrl+S)">Save</button>
         <button class="btn-run" id="btn-build" title="Только сборка (Ctrl+Shift+B)">Build</button>
         <button class="btn-run btn-run-primary" id="btn-run" title="Собрать и запустить (F5)">
@@ -55,11 +57,11 @@
             </div>
           </div>
 
-          <!-- Docs View (Ctrl+Shift+1) -->
+          <!-- Docs View (F1) -->
           <div class="docs-view" id="docs-view">
             <div class="docs-search-bar">
               <svg viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 110-10 5 5 0 010 10z"/></svg>
-              <input type="text" class="docs-search-input" id="docs-search" placeholder="Поиск по билетам и темам... (Ctrl+Shift+1)">
+              <input type="text" class="docs-search-input" id="docs-search" placeholder="Поиск по билетам и темам... (F1)">
             </div>
             <div class="docs-body">
               <div class="docs-sidebar" id="docs-sidebar"></div>
@@ -69,11 +71,11 @@
             </div>
           </div>
 
-          <!-- Solutions View (Ctrl+Shift+2) -->
+          <!-- Solutions View (F2) -->
           <div class="docs-view solutions-view" id="solutions-view">
             <div class="docs-search-bar">
               <svg viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 110-10 5 5 0 010 10z"/></svg>
-              <input type="text" class="docs-search-input" id="solutions-search" placeholder="Поиск по заданиям... (Ctrl+Shift+2)">
+              <input type="text" class="docs-search-input" id="solutions-search" placeholder="Поиск по заданиям... (F2)">
             </div>
             <div class="docs-body">
               <div class="docs-sidebar" id="solutions-sidebar"></div>
@@ -83,6 +85,8 @@
             </div>
           </div>
         </div>
+
+        <div class="output-resizer hidden" id="output-resizer" title="Перетащите для изменения высоты OUTPUT"></div>
 
         <div class="program-output-bar hidden" id="program-output-bar">
           <div class="program-output-head">
@@ -114,7 +118,7 @@
     <!-- Status Bar -->
     <footer class="statusbar">
       <div class="statusbar-left">
-        <div class="status-item clickable" id="status-diagnostics" title="Двойной клик — база знаний (Ctrl+Shift+1)">
+        <div class="status-item clickable" id="status-diagnostics" title="Двойной клик — база знаний (F1)">
           <span class="status-errors">
             <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M8 4.5v4M8 10.5v.5" stroke="#fff" stroke-width="1.5"/></svg>
             <span id="status-errors-count">0</span>
@@ -132,7 +136,7 @@
         <span class="status-item" id="status-dotnet" title=".NET SDK">● .NET</span>
         <span class="status-item" id="status-run-state"></span>
         <span class="status-item" id="status-language">C#</span>
-        <span class="status-item status-hint" title="Ctrl+Shift+1 — билеты · Ctrl+Shift+2 — задания">⌨</span>
+        <span class="status-item status-hint" title="F1 — билеты · F2 — задания · Alt+1/2 — запасной вариант">⌨</span>
         <span class="status-item" id="toggle-terminal" style="cursor:pointer">⊞ Terminal</span>
       </div>
     </footer>

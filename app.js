@@ -327,6 +327,69 @@
     $('#status-warnings-count').textContent = String(warnings);
   }
 
+  function normalizeProgramOutput(payload) {
+    if (!payload || typeof payload !== 'object' || !Array.isArray(payload.blocks)) return payload;
+
+    const isJunkVars = (vars) => {
+      const entries = Object.entries(vars || {});
+      if (!entries.length) return true;
+      return !entries.some(([, value]) => String(value).trim() !== '');
+    };
+
+    const splitPairs = (tail) => {
+      const parts = tail.split(/,\s*(?=[a-zA-Z_][a-zA-Z0-9_]*\s*=)/);
+      const pairs = [];
+      for (const part of parts) {
+        const eq = part.indexOf('=');
+        if (eq === -1) continue;
+        pairs.push([part.slice(0, eq).trim(), part.slice(eq + 1).trim()]);
+      }
+      return pairs;
+    };
+
+    const extractPairs = (line) => {
+      const matches = [...line.matchAll(/[a-zA-Z_][a-zA-Z0-9_]*\s*=/g)];
+      if (!matches.length) return [];
+      const ident = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
+      let best = [];
+      for (const m of matches) {
+        const pairs = splitPairs(line.slice(m.index));
+        const score = pairs.filter(([name, value]) => ident.test(name) && !value.includes('=')).length;
+        if (score > best.length) best = pairs;
+      }
+      return best;
+    };
+
+    const parseRaw = (raw) => {
+      const blocks = [];
+      for (const line of String(raw).split('\n')) {
+        const text = line.trim();
+        if (!text || /^[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*$/.test(text)) continue;
+        const pairs = extractPairs(text);
+        if (pairs.length && pairs.some(([, value]) => value.trim() !== '')) {
+          blocks.push({ type: 'vars', vars: Object.fromEntries(pairs) });
+        } else if (text) {
+          blocks.push({ type: 'text', text });
+        }
+      }
+      return blocks;
+    };
+
+    let blocks = payload.blocks.filter((block) => block.type !== 'vars' || !isJunkVars(block.vars));
+    if (payload.raw) {
+      const reparsed = parseRaw(payload.raw);
+      if (reparsed.length > blocks.length) blocks = reparsed;
+    }
+    return { ...payload, blocks };
+  }
+
+  function syncOutputResizerVisibility() {
+    const bar = $('#program-output-bar');
+    const resizer = $('#output-resizer');
+    if (!bar || !resizer) return;
+    resizer.classList.toggle('hidden', bar.classList.contains('hidden'));
+  }
+
   function showProgramOutput(payload) {
     const bar = $('#program-output-bar');
     const body = $('#program-output-body');
@@ -335,10 +398,12 @@
       bar.classList.add('hidden');
       body.innerHTML = '';
       meta.textContent = '';
+      syncOutputResizerVisibility();
       return;
     }
 
     bar.classList.remove('hidden');
+    syncOutputResizerVisibility();
 
     if (typeof payload === 'string') {
       meta.textContent = '';
@@ -346,9 +411,10 @@
       return;
     }
 
-    meta.textContent = payload.stdinNote || '';
+    const normalized = normalizeProgramOutput(payload);
+    meta.textContent = normalized.stdinNote || '';
     const blockLabels = ['Инициализация', 'После ввода', 'Результат', 'Вывод'];
-    body.innerHTML = payload.blocks.map((block, i) => {
+    body.innerHTML = normalized.blocks.map((block, i) => {
       const title = blockLabels[i] || `Вывод ${i + 1}`;
       if (block.type === 'vars') {
         const vars = Object.entries(block.vars)
@@ -686,15 +752,88 @@
     syncResizerVisibility();
   }
 
+  function initOutputResizer() {
+    const resizer = $('#output-resizer');
+    const bar = $('#program-output-bar');
+    const editorPanel = document.querySelector('.editor-panel');
+    const MIN_H = 72;
+    const MAX_RATIO = 0.55;
+
+    const saved = localStorage.getItem('outputHeight');
+    if (saved) {
+      const h = parseInt(saved, 10);
+      if (h >= MIN_H) bar.style.height = h + 'px';
+    }
+
+    function clampHeight(height) {
+      const maxH = Math.max(MIN_H, editorPanel.clientHeight * MAX_RATIO);
+      return Math.min(Math.max(height, MIN_H), maxH);
+    }
+
+    let startY = 0;
+    let startH = 0;
+
+    resizer.addEventListener('mousedown', (e) => {
+      if (bar.classList.contains('hidden')) return;
+      e.preventDefault();
+      startY = e.clientY;
+      startH = bar.offsetHeight;
+      document.body.classList.add('resizing-output');
+
+      const onMove = (ev) => {
+        const next = clampHeight(startH + (startY - ev.clientY));
+        bar.style.height = next + 'px';
+      };
+
+      const onUp = () => {
+        document.body.classList.remove('resizing-output');
+        localStorage.setItem('outputHeight', String(bar.offsetHeight));
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        syncEditorHeight();
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+
+    resizer.addEventListener('dblclick', () => {
+      bar.style.height = '160px';
+      localStorage.setItem('outputHeight', '160');
+      syncEditorHeight();
+    });
+  }
+
+  function hotkeyBlockedTarget(target) {
+    if (!target) return false;
+    if (target.id === 'code-input') return false;
+    const tag = target.tagName;
+    return tag === 'INPUT' || tag === 'TEXTAREA' || target.isContentEditable;
+  }
+
+  function matchDocsHotkey(e) {
+    if (e.key === 'F1') return true;
+    if (e.altKey && !e.ctrlKey && !e.metaKey && (e.code === 'Digit1' || e.code === 'Numpad1')) return true;
+    return e.ctrlKey && e.shiftKey && !e.altKey && (e.code === 'Digit1' || e.code === 'Numpad1');
+  }
+
+  function matchSolutionsHotkey(e) {
+    if (e.key === 'F2') return true;
+    if (e.altKey && !e.ctrlKey && !e.metaKey && (e.code === 'Digit2' || e.code === 'Numpad2')) return true;
+    return e.ctrlKey && e.shiftKey && !e.altKey && (e.code === 'Digit2' || e.code === 'Numpad2');
+  }
+
   function initHotkeys() {
     document.addEventListener('keydown', (e) => {
+      if (hotkeyBlockedTarget(e.target)) return;
+
       if (e.ctrlKey && e.key === 's') { e.preventDefault(); saveProgram().then(() => showToast('Сохранено', 'success')).catch(() => {}); }
       if (e.ctrlKey && e.shiftKey && (e.key === 'b' || e.key === 'B')) { e.preventDefault(); runBuildOnly(); }
       if (e.key === 'F5') { e.preventDefault(); runBuild(); }
-      if (e.ctrlKey && e.shiftKey && e.key === '1') { e.preventDefault(); toggleDocsMode(); }
-      if (e.ctrlKey && e.shiftKey && e.key === '2') { e.preventDefault(); toggleSolutionsMode(); }
+      if (matchDocsHotkey(e)) { e.preventDefault(); e.stopPropagation(); toggleDocsMode(); return; }
+      if (matchSolutionsHotkey(e)) { e.preventDefault(); e.stopPropagation(); toggleSolutionsMode(); return; }
       if (e.key === 'Escape' && STATE.overlayMode) { e.preventDefault(); closeOverlay(); }
-    });
+    }, true);
   }
 
   async function checkHealth() {
@@ -750,6 +889,7 @@
   async function init() {
     initEditor();
     initPanelResizer();
+    initOutputResizer();
     initHotkeys();
     initStatusBar();
     initSearch();
@@ -760,6 +900,8 @@
     renderProblems();
     $('#btn-run').addEventListener('click', runBuild);
     $('#btn-build').addEventListener('click', runBuildOnly);
+    $('#btn-docs').addEventListener('click', toggleDocsMode);
+    $('#btn-solutions').addEventListener('click', toggleSolutionsMode);
     $('#btn-save').addEventListener('click', () => saveProgram().catch((e) => appendTerminalLine($('#terminal-body'), e.message, 'error')));
     $('#toggle-terminal').addEventListener('click', () => {
       $('#terminal-panel').classList.toggle('collapsed');

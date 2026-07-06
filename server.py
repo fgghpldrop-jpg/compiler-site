@@ -107,6 +107,11 @@ def extract_var_pairs(line: str) -> list[tuple[str, str]]:
     return split_assignment_tail(tail)
 
 
+def is_meaningful_vars(vars_dict: dict[str, str]) -> bool:
+    """Ignore Console.Write prompts like ``x = `` that parse as empty assignments."""
+    return any(value.strip() for value in vars_dict.values())
+
+
 def format_program_output(raw: str, stdin_values: list[str] | None = None) -> dict:
     """Turn raw stdout into structured blocks for the UI."""
     blocks: list[dict] = []
@@ -114,12 +119,13 @@ def format_program_output(raw: str, stdin_values: list[str] | None = None) -> di
         text = line.strip()
         if not text:
             continue
+        if re.match(r"^[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*$", text):
+            continue
         pairs = extract_var_pairs(text)
         if pairs:
-            blocks.append({
-                "type": "vars",
-                "vars": {name: value for name, value in pairs},
-            })
+            vars_dict = {name: value for name, value in pairs}
+            if is_meaningful_vars(vars_dict):
+                blocks.append({"type": "vars", "vars": vars_dict})
         else:
             blocks.append({"type": "text", "text": text})
 
