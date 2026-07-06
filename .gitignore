@@ -1,0 +1,18 @@
+# Сборка .NET — не коммитить, соберётся на сервере
+project/bin/
+project/obj/
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Локальное (не нужно для сайта)
+.cursor/
+terminals/

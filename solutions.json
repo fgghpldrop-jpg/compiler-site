@@ -1,0 +1,242 @@
+[
+  {
+    "id": "01",
+    "title": "Задание 1",
+    "formula": "b = (1 + cos²(x+z)) / |x³ − 2y²|",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 2, y = 3, z = 1;\n        double b = (1 + Math.Pow(Math.Cos(x + z), 2)) / Math.Abs(Math.Pow(x, 3) - 2 * Math.Pow(y, 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = (1 + Math.Pow(Math.Cos(x + z), 2)) / Math.Abs(Math.Pow(x, 3) - 2 * Math.Pow(y, 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "02",
+    "title": "Задание 2",
+    "formula": "b = x + ∛(zy) / (y + cos x)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1, y = 2, z = 3;\n        double b = x + Math.Pow(z * y, 1.0 / 3) / (y + Math.Cos(x));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = x + Math.Pow(z * y, 1.0 / 3) / (y + Math.Cos(x));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "03",
+    "title": "Задание 3",
+    "formula": "b = y³ / (x + y³·cos²z)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 2, y = 1.5, z = 0.5;\n        double b = Math.Pow(y, 3) / (x + Math.Pow(y, 3) * Math.Pow(Math.Cos(z), 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Pow(y, 3) / (x + Math.Pow(y, 3) * Math.Pow(Math.Cos(z), 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "04",
+    "title": "Задание 4",
+    "formula": "b = 1 + (x²+1)/(3+y²) + sin(2z)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1, y = 2, z = 0.3;\n        double b = 1 + (Math.Pow(x, 2) + 1) / (3 + Math.Pow(y, 2)) + Math.Sin(2 * z);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = 1 + (Math.Pow(x, 2) + 1) / (3 + Math.Pow(y, 2)) + Math.Sin(2 * z);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "05",
+    "title": "Задание 5",
+    "formula": "b = √(x + ∜|y| + cos²z)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 4, y = -2, z = 1;\n        double b = Math.Sqrt(x + Math.Pow(Math.Abs(y), 0.25) + Math.Pow(Math.Cos(z), 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Sqrt(x + Math.Pow(Math.Abs(y), 0.25) + Math.Pow(Math.Cos(z), 2));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "06",
+    "title": "Задание 6",
+    "formula": "b = |cos x + cos y| + 2·sin²z",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1, y = 2, z = 0.5;\n        double b = Math.Abs(Math.Cos(x) + Math.Cos(y)) + 2 * Math.Pow(Math.Sin(z), 2);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Abs(Math.Cos(x) + Math.Cos(y)) + 2 * Math.Pow(Math.Sin(z), 2);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "07",
+    "title": "Задание 7",
+    "formula": "b = z·(tg y − e^(−(x+3)))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1, y = 0.5, z = 2;\n        double b = z * (Math.Tan(y) - Math.Exp(-(x + 3)));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = z * (Math.Tan(y) - Math.Exp(-(x + 3)));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "08",
+    "title": "Задание 8",
+    "formula": "b = √(10·(∛z + x^(y+2)))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 2, y = 1, z = 8;\n        double b = Math.Sqrt(10 * (Math.Pow(z, 1.0 / 3) + Math.Pow(x, y + 2)));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Sqrt(10 * (Math.Pow(z, 1.0 / 3) + Math.Pow(x, y + 2)));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "09",
+    "title": "Задание 9",
+    "formula": "b = |x−y|·(sin²z + tg z)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 3, y = 1, z = 0.4;\n        double b = Math.Abs(x - y) * (Math.Pow(Math.Sin(z), 2) + Math.Tan(z));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Abs(x - y) * (Math.Pow(Math.Sin(z), 2) + Math.Tan(z));\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "10",
+    "title": "Задание 10",
+    "formula": "b = sin²z + |x+y|",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1, y = 2, z = 0.7;\n        double b = Math.Pow(Math.Sin(z), 2) + Math.Abs(x + y);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        Console.Write(\"y = \"); y = double.Parse(Console.ReadLine()!);\n        Console.Write(\"z = \"); z = double.Parse(Console.ReadLine()!);\n        b = Math.Pow(Math.Sin(z), 2) + Math.Abs(x + y);\n        Console.WriteLine($\"x={x}, y={y}, z={z}, b={b}\");\n    }\n}\n"
+  },
+  {
+    "id": "11",
+    "title": "Задание 11",
+    "formula": "y = (cos eˣ + ln(1+x)² + √(e^(cos x)+sin²πx) + √(1/x+cos x²))^(sin x)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.5;\n        double y = Math.Pow(\n            Math.Cos(Math.Exp(x)) + Math.Pow(Math.Log(1 + x), 2)\n            + Math.Sqrt(Math.Exp(Math.Cos(x)) + Math.Pow(Math.Sin(Math.PI * x), 2))\n            + Math.Sqrt(1 / x + Math.Cos(Math.Pow(x, 2))),\n            Math.Sin(x));\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(\n            Math.Cos(Math.Exp(x)) + Math.Pow(Math.Log(1 + x), 2)\n            + Math.Sqrt(Math.Exp(Math.Cos(x)) + Math.Pow(Math.Sin(Math.PI * x), 2))\n            + Math.Sqrt(1 / x + Math.Cos(Math.Pow(x, 2))),\n            Math.Sin(x));\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "12",
+    "title": "Задание 12",
+    "formula": "y = (1/√x + cos eˣ + cos x²) / ∛(ln(1+x)² + √(e^(cos x)+sin²πx))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 2;\n        double y = (1 / Math.Sqrt(x) + Math.Cos(Math.Exp(x)) + Math.Cos(Math.Pow(x, 2)))\n            / Math.Pow(Math.Pow(Math.Log(1 + x), 2) + Math.Sqrt(Math.Exp(Math.Cos(x)) + Math.Pow(Math.Sin(Math.PI * x), 2)), 1.0 / 3);\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = (1 / Math.Sqrt(x) + Math.Cos(Math.Exp(x)) + Math.Cos(Math.Pow(x, 2)))\n            / Math.Pow(Math.Pow(Math.Log(1 + x), 2) + Math.Sqrt(Math.Exp(Math.Cos(x)) + Math.Pow(Math.Sin(Math.PI * x), 2)), 1.0 / 3);\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "13",
+    "title": "Задание 13",
+    "formula": "y = (sin(πx²) + ln(x²))^(sin x + e^(cos x) + x²)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.2;\n        double y = Math.Pow(Math.Sin(Math.PI * Math.Pow(x, 2)) + Math.Log(Math.Pow(x, 2)),\n            Math.Sin(x) + Math.Exp(Math.Cos(x)) + Math.Pow(x, 2));\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(Math.Sin(Math.PI * Math.Pow(x, 2)) + Math.Log(Math.Pow(x, 2)),\n            Math.Sin(x) + Math.Exp(Math.Cos(x)) + Math.Pow(x, 2));\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "14",
+    "title": "Задание 14",
+    "formula": "y = (ln(1+x)² + cos(πx³))^(sin x) + (e^(x²)+cos(eˣ)+√(1/x))^(1/x)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.5;\n        double y = Math.Pow(Math.Pow(Math.Log(1 + x), 2) + Math.Cos(Math.PI * Math.Pow(x, 3)), Math.Sin(x))\n            + Math.Pow(Math.Exp(Math.Pow(x, 2)) + Math.Cos(Math.Exp(x)) + Math.Sqrt(1 / x), 1 / x);\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(Math.Pow(Math.Log(1 + x), 2) + Math.Cos(Math.PI * Math.Pow(x, 3)), Math.Sin(x))\n            + Math.Pow(Math.Exp(Math.Pow(x, 2)) + Math.Cos(Math.Exp(x)) + Math.Sqrt(1 / x), 1 / x);\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "15",
+    "title": "Задание 15",
+    "formula": "y = ∜(cos(eˣ)+e^(x²)+√(1/x)) / (cos(πx³)+ln(1+x)²)^(sin x)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.3;\n        double num = Math.Pow(Math.Cos(Math.Exp(x)) + Math.Exp(Math.Pow(x, 2)) + Math.Sqrt(1 / x), 0.25);\n        double den = Math.Pow(Math.Cos(Math.PI * Math.Pow(x, 3)) + Math.Pow(Math.Log(1 + x), 2), Math.Sin(x));\n        double y = num / den;\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        num = Math.Pow(Math.Cos(Math.Exp(x)) + Math.Exp(Math.Pow(x, 2)) + Math.Sqrt(1 / x), 0.25);\n        den = Math.Pow(Math.Cos(Math.PI * Math.Pow(x, 3)) + Math.Pow(Math.Log(1 + x), 2), Math.Sin(x));\n        y = num / den;\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "16",
+    "title": "Задание 16",
+    "formula": "y = sin(sin x + e^(cos x) + x²) · ∜(sin(πx²)+ln(x²))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.1;\n        double y = Math.Sin(Math.Sin(x) + Math.Exp(Math.Cos(x)) + Math.Pow(x, 2))\n            * Math.Pow(Math.Sin(Math.PI * Math.Pow(x, 2)) + Math.Log(Math.Pow(x, 2)), 0.25);\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Sin(Math.Sin(x) + Math.Exp(Math.Cos(x)) + Math.Pow(x, 2))\n            * Math.Pow(Math.Sin(Math.PI * Math.Pow(x, 2)) + Math.Log(Math.Pow(x, 2)), 0.25);\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "17",
+    "title": "Задание 17",
+    "formula": "y = (cos(eˣ)+√(1/x)+cos(πx³)+ln(1+x)²+e^(x²)) / √(ln(1+x)²+cos(πx³))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.4;\n        double y = (Math.Cos(Math.Exp(x)) + Math.Sqrt(1 / x) + Math.Cos(Math.PI * Math.Pow(x, 3))\n            + Math.Pow(Math.Log(1 + x), 2) + Math.Exp(Math.Pow(x, 2)))\n            / Math.Sqrt(Math.Pow(Math.Log(1 + x), 2) + Math.Cos(Math.PI * Math.Pow(x, 3)));\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = (Math.Cos(Math.Exp(x)) + Math.Sqrt(1 / x) + Math.Cos(Math.PI * Math.Pow(x, 3))\n            + Math.Pow(Math.Log(1 + x), 2) + Math.Exp(Math.Pow(x, 2)))\n            / Math.Sqrt(Math.Pow(Math.Log(1 + x), 2) + Math.Cos(Math.PI * Math.Pow(x, 3)));\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "18",
+    "title": "Задание 18",
+    "formula": "y = ∜(ln(x²)+sin(πx²)) / (x²+e^(cos x)+sin x)^(sin x)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.2;\n        double y = Math.Pow(Math.Log(Math.Pow(x, 2)) + Math.Sin(Math.PI * Math.Pow(x, 2)), 0.25)\n            / Math.Pow(Math.Pow(x, 2) + Math.Exp(Math.Cos(x)) + Math.Sin(x), Math.Sin(x));\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(Math.Log(Math.Pow(x, 2)) + Math.Sin(Math.PI * Math.Pow(x, 2)), 0.25)\n            / Math.Pow(Math.Pow(x, 2) + Math.Exp(Math.Cos(x)) + Math.Sin(x), Math.Sin(x));\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "19",
+    "title": "Задание 19",
+    "formula": "y = (e^(cos x)+sin x+x²)^(sin x) / ∜(ln(x²)+sin(πx²))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.2;\n        double y = Math.Pow(Math.Exp(Math.Cos(x)) + Math.Sin(x) + Math.Pow(x, 2), Math.Sin(x))\n            / Math.Pow(Math.Log(Math.Pow(x, 2)) + Math.Sin(Math.PI * Math.Pow(x, 2)), 0.25);\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(Math.Exp(Math.Cos(x)) + Math.Sin(x) + Math.Pow(x, 2), Math.Sin(x))\n            / Math.Pow(Math.Log(Math.Pow(x, 2)) + Math.Sin(Math.PI * Math.Pow(x, 2)), 0.25);\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "20",
+    "title": "Задание 20",
+    "formula": "y = (cos(eˣ)+e^(x²)+√(1/x))^(√(cos(πx³)+ln((x+1)²)))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double x = 1.5;\n        double y = Math.Pow(\n            Math.Cos(Math.Exp(x)) + Math.Exp(Math.Pow(x, 2)) + Math.Sqrt(1 / x),\n            Math.Sqrt(Math.Cos(Math.PI * Math.Pow(x, 3)) + Math.Log(Math.Pow(x + 1, 2))));\n        Console.WriteLine($\"x={x}, y={y}\");\n\n        Console.Write(\"x = \"); x = double.Parse(Console.ReadLine()!);\n        y = Math.Pow(\n            Math.Cos(Math.Exp(x)) + Math.Exp(Math.Pow(x, 2)) + Math.Sqrt(1 / x),\n            Math.Sqrt(Math.Cos(Math.PI * Math.Pow(x, 3)) + Math.Log(Math.Pow(x + 1, 2))));\n        Console.WriteLine($\"x={x}, y={y}\");\n    }\n}\n"
+  },
+  {
+    "id": "21",
+    "title": "Задание 21",
+    "formula": "y=1/x (x≥−5,x≠0); y=x² (x≤−10); иначе √|x+1|",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x >= -5 && x != 0) return (1 / x, 1);\n        if (x <= -10) return (x * x, 2);\n        return (Math.Sqrt(Math.Abs(x + 1)), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "22",
+    "title": "Задание 22",
+    "formula": "y=x² (x≤0,x≠−10); y=√(x+1) (x>1); иначе 1/x",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x <= 0 && x != -10) return (x * x, 1);\n        if (x > 1) return (Math.Sqrt(x + 1), 2);\n        return (1 / x, 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "23",
+    "title": "Задание 23",
+    "formula": "y=x+e^(2x) (x≤0,x≠−1); y=cos²x (0<x≤3.14); иначе x",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x <= 0 && x != -1) return (x + Math.Exp(2 * x), 1);\n        if (x > 0 && x <= 3.14) return (Math.Pow(Math.Cos(x), 2), 2);\n        return (x, 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "24",
+    "title": "Задание 24",
+    "formula": "y=x³ (x>1,x≠20); y=x² (−5≤x≤5); иначе lg|x|",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x > 1 && x != 20) return (Math.Pow(x, 3), 1);\n        if (x >= -5 && x <= 5) return (x * x, 2);\n        return (Math.Log10(Math.Abs(x)), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "25",
+    "title": "Задание 25",
+    "formula": "y=√x (x≥100,x≠105); y=∛x (x=20 или x=40); иначе x²+1",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x >= 100 && x != 105) return (Math.Sqrt(x), 1);\n        if (x == 20 || x == 40) return (Math.Pow(x, 1.0 / 3), 2);\n        return (x * x + 1, 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "26",
+    "title": "Задание 26",
+    "formula": "y=∛x (x>2); y=1/x (x≤2,x≠0); иначе x²−1",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x > 2) return (Math.Pow(x, 1.0 / 3), 1);\n        if (x <= 2 && x != 0) return (1 / x, 2);\n        return (x * x - 1, 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "27",
+    "title": "Задание 27",
+    "formula": "y=8x+1 (x≥5,x≠9); y=x²+|x| (x≤1); иначе x³+√x",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x >= 5 && x != 9) return (8 * x + 1, 1);\n        if (x <= 1) return (x * x + Math.Abs(x), 2);\n        return (Math.Pow(x, 3) + Math.Sqrt(x), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "28",
+    "title": "Задание 28",
+    "formula": "y=1−3x (x>0,x≠8); y=x²−sin x (x≤1); иначе cos x",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x > 0 && x != 8) return (1 - 3 * x, 1);\n        if (x <= 1) return (x * x - Math.Sin(x), 2);\n        return (Math.Cos(x), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "29",
+    "title": "Задание 29",
+    "formula": "y=x³+1 (x≥8,x≠10); y=2x²+∛x (x≤1); иначе √x",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x >= 8 && x != 10) return (Math.Pow(x, 3) + 1, 1);\n        if (x <= 1) return (2 * x * x + Math.Pow(x, 1.0 / 3), 2);\n        return (Math.Sqrt(x), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "30",
+    "title": "Задание 30",
+    "formula": "y=√x (x≥4); y=2x+3 (x≤1); иначе |x³−4|",
+    "code": "using System;\n\nclass Program\n{\n\n    static (double y, int formula) Calc(double x)\n    {\n        if (x >= 4) return (Math.Sqrt(x), 1);\n        if (x <= 1) return (2 * x + 3, 2);\n        return (Math.Abs(Math.Pow(x, 3) - 4), 3);\n    }\n    static void Main()\n    {\n        double[] tests = { -11, -5, -1, 0.5, 2, 9, 15 };\n        foreach (double x in tests)\n        {\n            var (y, f) = Calc(x);\n            Console.WriteLine($\"x={x}, y={y}, формула={f}\");\n        }\n\n        Console.Write(\"x = \");\n        double xIn = double.Parse(Console.ReadLine()!);\n        var (yIn, fIn) = Calc(xIn);\n        Console.WriteLine($\"x={xIn}, y={yIn}, формула={fIn}\");\n    }\n}\n"
+  },
+  {
+    "id": "31",
+    "title": "Задание 31",
+    "formula": "Σ(i=1..15) √(i²+5)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int i = 1; i <= 15; i++)\n            sum += Math.Sqrt(i * i + 5);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "32",
+    "title": "Задание 32",
+    "formula": "Σ(k=1..25) ln(k/(k²+1))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int k = 1; k <= 25; k++)\n            sum += Math.Log(k / (double)(k * k + 1));\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "33",
+    "title": "Задание 33",
+    "formula": "Σ(n=1..15) tg(e^(1/n)+1)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int n = 1; n <= 15; n++)\n            sum += Math.Tan(Math.Exp(1.0 / n) + 1);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "34",
+    "title": "Задание 34",
+    "formula": "Σ(i=1..25) arccos^(0.35)(i/(i+1))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int i = 1; i <= 25; i++)\n            sum += Math.Pow(Math.Acos(i / (double)(i + 1)), 0.35);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "35",
+    "title": "Задание 35",
+    "formula": "Σ(m=1..25) (ln m + e^(−m))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int m = 1; m <= 25; m++)\n            sum += Math.Log(m) + Math.Exp(-m);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "36",
+    "title": "Задание 36",
+    "formula": "Σ(i=1..35) (10^(0.1i) − arccos(1/(i+1)))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int i = 1; i <= 35; i++)\n            sum += Math.Pow(10, 0.1 * i) - Math.Acos(1.0 / (i + 1));\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "37",
+    "title": "Задание 37",
+    "formula": "Σ(j=1..20) tg(j)/tg(0.5j+1)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int j = 1; j <= 20; j++)\n            sum += Math.Tan(j) / Math.Tan(0.5 * j + 1);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "38",
+    "title": "Задание 38",
+    "formula": "Σ(i=1..30) e^(0.3i)/sin(i+2)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int i = 1; i <= 30; i++)\n            sum += Math.Exp(0.3 * i) / Math.Sin(i + 2);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "39",
+    "title": "Задание 39",
+    "formula": "Σ(n=1..20) sin(n−2)/tg(n+2)",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int n = 1; n <= 20; n++)\n            sum += Math.Sin(n - 2) / Math.Tan(n + 2);\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  },
+  {
+    "id": "40",
+    "title": "Задание 40",
+    "formula": "Σ(j=1..30) √(j³+j+3)/arcsin(1/(j+1))",
+    "code": "using System;\n\nclass Program\n{\n    static void Main()\n    {\n        double sum = 0;\n        for (int j = 1; j <= 30; j++)\n            sum += Math.Sqrt(Math.Pow(j, 3) + j + 3) / Math.Asin(1.0 / (j + 1));\n        Console.WriteLine($\"Сумма = {sum}\");\n\n    }\n}\n"
+  }
+]

@@ -1,0 +1,10 @@
+.git
+.gitignore
+**/__pycache__
+**/*.pyc
+project/bin
+project/obj
+*.md
+build_solutions.py
+.cursor
+terminals

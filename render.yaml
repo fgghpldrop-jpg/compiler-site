@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: compiler-site
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: BUILD_CONFIG
+        value: Release
