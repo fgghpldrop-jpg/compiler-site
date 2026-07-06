@@ -691,8 +691,8 @@
       if (e.ctrlKey && e.key === 's') { e.preventDefault(); saveProgram().then(() => showToast('Сохранено', 'success')).catch(() => {}); }
       if (e.ctrlKey && e.shiftKey && (e.key === 'b' || e.key === 'B')) { e.preventDefault(); runBuildOnly(); }
       if (e.key === 'F5') { e.preventDefault(); runBuild(); }
-      if (e.ctrlKey && e.shiftKey && (e.key === 't' || e.key === 'T')) { e.preventDefault(); toggleDocsMode(); }
-      if (e.ctrlKey && e.shiftKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); toggleSolutionsMode(); }
+      if (e.ctrlKey && e.shiftKey && e.key === '1') { e.preventDefault(); toggleDocsMode(); }
+      if (e.ctrlKey && e.shiftKey && e.key === '2') { e.preventDefault(); toggleSolutionsMode(); }
       if (e.key === 'Escape' && STATE.overlayMode) { e.preventDefault(); closeOverlay(); }
     });
   }
